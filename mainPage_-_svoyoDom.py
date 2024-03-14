@@ -1,105 +1,211 @@
-# import requests
-# from bs4 import BeautifulSoup
-#
-# # url = 'https://svoydom.kz/project/1/1061833/?objview=list&PAGEN_1=1&bxajaxid=ed9cca27dcf034d99c8046454bd163c2'
-#
-# last_page_pagination = 13
-# for i in range(1, last_page_pagination + 1):
-#     # print(i)
-#     url = f'https://svoydom.kz/project/1/1061833/?objview=list&PAGEN_1={i}&bxajaxid=ed9cca27dcf034d99c8046454bd163c2'
-#
-# # url = 'https://svoydom.kz/project/1/1061833/?objview=list&PAGEN_1=2&bxajaxid=ed9cca27dcf034d99c8046454bd163c2'
-# # url = 'https://svoydom.kz/project/1/1061833/'
-#     page = requests.get(url)
-#     # print('pageStatus:', page.status_code)
-#
-#     allInfo = list()
-#     filterInfo = list()
-#     remove_data = list()
-#     resultInfo = list()
-#     paginateLimit = int()
-#     soup = BeautifulSoup(page.text, "html.parser")
-#
-#
-#     # ################################################
-#     # paginateLimitInfo = soup.findAll(class_='bx-pagination-container')
-#     # countt = 0
-#     # # for i in paginateLimitInfo:
-#     # #     for j in i:
-#     # #         for k in j:
-#     # #             countt += 1
-#     # #             print(countt, k)
-#     # #         # countt += 1
-#     # #         # print(countt, j)
-#     # #     break
-#     # for i in paginateLimitInfo:
-#     #
-#     #     print(i)
-#     #         # countt += 1
-#     #         # print(countt, j)
-#     #     break
-#     ################################################
-#
-#     # print('paginateLimit'.upper(), paginateLimit)
-#
-#     allInfo = soup.findAll(class_='favorites-items')
-#     for data in allInfo:
-#         if data.find('ul', class_='favorite-info-list') is not None:
-#             filterInfo.append(data.text)
-#
-#
-#     for i in filterInfo:
-#         # print(i)
-#         # print(i.split('\n'))
-#         remove_data += i.split('\n')
-#
-#     for i in remove_data:
-#         if i:
-#             resultInfo.append(i)
-#
-#     count = 0
-#     for i in resultInfo:
-#         count += 1
-#
-#         print(i, end=' ')
-#         if count % 13 == 0:
-#             print('')
-#
-#
-#
-# # {
-# #     'apt_numb': 1,
-# #     'info': {
-# #         'rooms_q': 3,
-# #         'S': 91.11,
-# #         'price_full': 31068510,
-# #         'price_by_one_sqM': 341,
-# #
-# #     }
-# # }
+import requests
+from bs4 import BeautifulSoup
+
+# url = 'https://svoydom.kz/project/1/1061833/?objview=list&PAGEN_1=1&bxajaxid=ed9cca27dcf034d99c8046454bd163c2'
+
+last_page_pagination = 3
+for i in range(1, last_page_pagination + 1):
+    # url = f'https://svoydom.kz/project/1/1061833/?objview=list&PAGEN_1={i}&bxajaxid=ed9cca27dcf034d99c8046454bd163c2'
+    url = f'https://svoydom.kz/project/1/1061833/?PAGEN_2={i}&bxajaxid=ad9ace59831b5e8d9f86e087d95a772c'
+
+# url = 'https://svoydom.kz/project/1/1061833/?objview=list&PAGEN_1=2&bxajaxid=ed9cca27dcf034d99c8046454bd163c2'
+# url = 'https://svoydom.kz/project/1/1061833/'
+    page = requests.get(url)
+    # print('pageStatus:', page.status_code)
+
+    allInfo = list()
+    filterInfo = list()
+    remove_data = list()
+    resultInfo = list()
+    result = list()
+    paginateLimit = int()
+    soup = BeautifulSoup(page.text, "html.parser")
 
 
-result = dict()
-data = [
-    '1-комн, № 42 Площадь: 43.16 м ² Стоимость: 15 235 480 ₸ Цена, м2: 353 000 м ² Этаж:  1 Подъезд: 1 Блок: 1 ',
-    '2-комн, № 3 Площадь: 60.5 м ² Стоимость: 20 933 000 ₸ Цена, м2: 346 000 м ² Этаж:  1 Подъезд: 1 Блок: 1 ',
-    '1-комн, № 2 Площадь: 37.2 м ² Стоимость: 13 726 800 ₸ Цена, м2: 369 000 м ² Этаж:  1 Подъезд: 1 Блок: 1'
-]
+    # ################################################
+    # paginateLimitInfo = soup.findAll(class_='bx-pagination-container')
+    # countt = 0
+    # # for i in paginateLimitInfo:
+    # #     for j in i:
+    # #         for k in j:
+    # #             countt += 1
+    # #             print(countt, k)
+    # #         # countt += 1
+    # #         # print(countt, j)
+    # #     break
+    # for i in paginateLimitInfo:
+    #
+    #     print(i)
+    #         # countt += 1
+    #         # print(countt, j)
+    #     break
+    ################################################
 
-for item in data:
-    # apt_numb_ind = item.rfind('№')
-    apt_numb_ind = str()
-    # print(item[apt_numb])
+    # print('paginateLimit'.upper(), paginateLimit)
 
-    for j in range(item.find('№') + 2, item.find('№') + 5):
-        if item[j] != ' ':
-            apt_numb_ind += item[j]
-            print(item[j], item[j], item)
+    allInfo = soup.findAll(class_='favorites-items')
+    for data in allInfo:
+        if data.find('ul', class_='favorite-info-list') is not None:
+            filterInfo.append(data.text)
 
-        else:
-            break
+    for i in filterInfo:
+        # print(i)
+        # print(i.split('\n'))
+        remove_data += i.split('\n')
 
-    result[apt_numb_ind] = item
+    for i in remove_data:
+        if i:
+            resultInfo.append(i)
 
-for i in result:
-    print(i, result[i])
+
+
+
+
+
+
+
+# print(type(resultInfo))
+
+# {
+#     'apt_numb': 1,
+#     'info': {
+#         'rooms_q': 3,
+#         'S': 91.11,
+#         'price_full': 31068510,
+#         'price_by_one_sqM': 341,
+#
+#     }
+# }
+
+######################## WORKED CODE #####################################
+# result = dict()
+# data = [
+#     '1-комн, № 42 Площадь: 43.16 м ² Стоимость: 15 235 480 ₸ Цена, м2: 353 000 м ² Этаж:  1 Подъезд: 1 Блок: 1 ',
+#     '2-комн, № 3 Площадь: 60.5 м ² Стоимость: 20 933 000 ₸ Цена, м2: 346 000 м ² Этаж:  1 Подъезд: 1 Блок: 1 ',
+#     '1-комн, № 2 Площадь: 37.2 м ² Стоимость: 13 726 800 ₸ Цена, м2: 369 000 м ² Этаж:  1 Подъезд: 1 Блок: 1'
+# ]
+#
+# for item in data:
+#     # apt_numb_ind = item.rfind('№')
+#     apt_numb_ind = str()
+#     # print(item[apt_numb])
+#
+#     for j in range(item.find('№') + 2, item.find('№') + 5):
+#         if item[j] != ' ':
+#             apt_numb_ind += item[j]
+#             print(item[j], item[j], item)
+#         else:
+#             break
+#
+#     result[apt_numb_ind] = item
+#
+# for i in result:
+#     print(i, result[i])
+##############################################################
+# ######################## WORKED CODE #####################################
+# result = dict()
+# data = [
+#     '3-комн, № 244 Площадь: 91.11 м ² Стоимость: 31 068 510 ₸ Цена, м2: 341 000 м ² Этаж:  9 Подъезд: 4 Блок: 1',
+#     '1-комн, № 241 Площадь: 35.24 м ² Стоимость: 13 778 840 ₸ Цена, м2: 391 000 м ² Этаж:  9 Подъезд: 4 Блок: 1 ',
+#     '2-комн, № 239 Площадь: 60.61 м ² Стоимость: 21 577 160 ₸ Цена, м2: 356 000 м ² Этаж:  9 Подъезд: 4 Блок: 1 ',
+#     '3-комн, № 238 Площадь: 91.11 м ² Стоимость: 32 435 160 ₸ Цена, м2: 356 000 м ² Этаж:  8 Подъезд: 4 Блок: 1 ',
+#     '1-комн, № 235 Площадь: 35.24 м ² Стоимость: 14 483 640 ₸ Цена, м2: 411 000 м ² Этаж:  8 Подъезд: 4 Блок: 1 ',
+#     '2-комн, № 234 Площадь: 70.97 м ² Стоимость: 24 910 470 ₸ Цена, м2: 351 000 м ² Этаж:  8 Подъезд: 4 Блок: 1 ',
+#     '3-комн, № 232 Площадь: 91.11 м ² Стоимость: 32 799 600 ₸ Цена, м2: 360 000 м ² Этаж:  7 Подъезд: 4 Блок: 1 ',
+#     '2-комн, № 228 Площадь: 70.97 м ² Стоимость: 25 123 380 ₸ Цена, м2: 354 000 м ² Этаж:  7 Подъезд: 4 Блок: 1',
+#     '2-комн, № 227 Площадь: 60.61 м ² Стоимость: 22 607 530 ₸ Цена, м2: 373 000 м ² Этаж:  7 Подъезд: 4 Блок: 1',
+#     '3-комн, № 226 Площадь: 91.11 м ² Стоимость: 32 981 820 ₸ Цена, м2: 362 000 м ² Этаж:  6 Подъезд: 4 Блок: 1',
+#     '2-комн, № 222 Площадь: 70.97 м ² Стоимость: 25 265 320 ₸ Цена, м2: 356 000 м ² Этаж:  6 Подъезд: 4 Блок: 1',
+#     '2-комн, № 216 Площадь: 68.24 м ² Стоимость: 24 293 440 ₸ Цена, м2: 356 000 м ² Этаж:  5 Подъезд: 4 Блок: 1',
+#     '3-комн, № 215 Площадь: 91.11 м ² Стоимость: 31 068 510 ₸ Цена, м2: 341 000 м ² Этаж:  9 Подъезд: 4 Блок: 1',
+#     '1-комн, № 214 Площадь: 35.24 м ² Стоимость: 13 778 840 ₸ Цена, м2: 391 000 м ² Этаж:  9 Подъезд: 4 Блок: 1',
+#     '2-комн, № 213 Площадь: 60.61 м ² Стоимость: 21 577 160 ₸ Цена, м2: 356 000 м ² Этаж:  9 Подъезд: 4 Блок: 1',
+#     '3-комн, № 212 Площадь: 91.11 м ² Стоимость: 32 435 160 ₸ Цена, м2: 356 000 м ² Этаж:  8 Подъезд: 4 Блок: 1',
+#     '1-комн, № 211 Площадь: 35.24 м ² Стоимость: 14 483 640 ₸ Цена, м2: 411 000 м ² Этаж:  8 Подъезд: 4 Блок: 1',
+#     '2-комн, № 210 Площадь: 70.97 м ² Стоимость: 24 910 470 ₸ Цена, м2: 351 000 м ² Этаж:  8 Подъезд: 4 Блок: 1',
+#     '3-комн, № 209 Площадь: 91.11 м ² Стоимость: 32 799 600 ₸ Цена, м2: 360 000 м ² Этаж:  7 Подъезд: 4 Блок: 1',
+#     '2-комн, № 208 Площадь: 70.97 м ² Стоимость: 25 123 380 ₸ Цена, м2: 354 000 м ² Этаж:  7 Подъезд: 4 Блок: 1',
+#     '2-комн, № 207 Площадь: 60.61 м ² Стоимость: 22 607 530 ₸ Цена, м2: 373 000 м ² Этаж:  7 Подъезд: 4 Блок: 1',
+#     '3-комн, № 206 Площадь: 91.11 м ² Стоимость: 32 981 820 ₸ Цена, м2: 362 000 м ² Этаж:  6 Подъезд: 4 Блок: 1',
+#     '2-комн, № 205 Площадь: 70.97 м ² Стоимость: 25 265 320 ₸ Цена, м2: 356 000 м ² Этаж:  6 Подъезд: 4 Блок: 1',
+#     '2-комн, № 204 Площадь: 68.24 м ² Стоимость: 24 293 440 ₸ Цена, м2: 356 000 м ² Этаж:  5 Подъезд: 4 Блок: 1'
+# ]
+#
+# for item in data:
+#     # apt_numb_ind = item.rfind('№')
+#     apt_numb_ind = str()
+#     # print(item[apt_numb])
+#
+#     for j in range(item.find('№') + 2, item.find('№') + 5):
+#         if item[j] != ' ':
+#             apt_numb_ind += item[j]
+#             # print(item[j], item[j], item)
+#         else:
+#             break
+#
+#     result[apt_numb_ind] = item
+#
+# for i in result:
+#     print(i, result[i])
+#############################################################
+
+
+
+#
+# def collect_result_dict(data):
+#     result = dict()
+#     # data = [
+#     #     '1-комн, № 42 Площадь: 43.16 м ² Стоимость: 15 235 480 ₸ Цена, м2: 353 000 м ² Этаж:  1 Подъезд: 1 Блок: 1 ',
+#     #     '2-комн, № 3 Площадь: 60.5 м ² Стоимость: 20 933 000 ₸ Цена, м2: 346 000 м ² Этаж:  1 Подъезд: 1 Блок: 1 ',
+#     #     '1-комн, № 2 Площадь: 37.2 м ² Стоимость: 13 726 800 ₸ Цена, м2: 369 000 м ² Этаж:  1 Подъезд: 1 Блок: 1'
+#     # ]
+#
+#     for item in data:
+#         # apt_numb_ind = item.rfind('№')
+#         apt_numb_ind = str()
+#         # print(item[apt_numb])
+#
+#         for j in range(item.find('№') + 2, item.find('№') + 5):
+#             if item[j] != ' ':
+#                 apt_numb_ind += item[j]
+#                 # print(item[j], item[j], item)
+#             else:
+#                 break
+#
+#         result[apt_numb_ind] = item
+#
+#     # for i in result:
+#     #     print(i, result[i])
+#
+#     return result
+
+
+# result = collect_result_dict(resultInfo)
+# for item in result:
+#     print(item, result[item])
+# print(result)
+
+
+######################################################
+# data = ['1-комн, № 186', 'Площадь:', '43.96 м ²', 'Стоимость:', '15 825 600 ₸', 'Цена, м2:', '360 000 м ²', 'Этаж: ', '12', 'Подъезд:', '3', 'Блок:', '1', '1-комн, № 185', 'Площадь:', '44.28 м ²', 'Стоимость:', '16 029 360 ₸', 'Цена, м2:', '362 000 м ²', 'Этаж: ', '12', 'Подъезд:', '3', 'Блок:', '1', '2-комн, № 184', 'Площадь:', '64.47 м ²', 'Стоимость:', '23 144 730 ₸', 'Цена, м2:', '359 000 м ²', 'Этаж: ', '11', 'Подъезд:', '3', 'Блок:', '1', '1-комн, № 182', 'Площадь:', '37.02 м ²', 'Стоимость:', '14 733 960 ₸', 'Цена, м2:', '398 000 м ²', 'Этаж: ', '11', 'Подъезд:', '3', 'Блок:', '1', '3-комн, № 181', 'Площадь:', '91.74 м ²', 'Стоимость:', '33 943 800 ₸', 'Цена, м2:', '370 000 м ²', 'Этаж: ', '11', 'Подъезд:', '3', 'Блок:', '1', '1-комн, № 180', 'Площадь:', '43.96 м ²', 'Стоимость:', '16 572 920 ₸', 'Цена, м2:', '377 000 м ²', 'Этаж: ', '11', 'Подъезд:', '3', 'Блок:', '1', '1-комн, № 179', 'Площадь:', '44.28 м ²', 'Стоимость:', '16 737 840 ₸', 'Цена, м2:', '378 000 м ²', 'Этаж: ', '11', 'Подъезд:', '3', 'Блок:', '1', '2-комн, № 178', 'Площадь:', '64.47 м ²', 'Стоимость:', '23 338 140 ₸', 'Цена, м2:', '362 000 м ²', 'Этаж: ', '10', 'Подъезд:', '3', 'Блок:', '1', '1-комн, № 176', 'Площадь:', '37.02 м ²', 'Стоимость:', '14 733 960 ₸', 'Цена, м2:', '398 000 м ²', 'Этаж: ', '10', 'Подъезд:', '3', 'Блок:', '1', '3-комн, № 175', 'Площадь:', '91.74 м ²', 'Стоимость:', '34 310 760 ₸', 'Цена, м2:', '374 000 м ²', 'Этаж: ', '10', 'Подъезд:', '3', 'Блок:', '1', '1-комн, № 174', 'Площадь:', '43.96 м ²', 'Стоимость:', '16 572 920 ₸', 'Цена, м2:', '377 000 м ²', 'Этаж: ', '10', 'Подъезд:', '3', 'Блок:', '1', '1-комн, № 173', 'Площадь:', '44.28 м ²', 'Стоимость:', '16 737 840 ₸', 'Цена, м2:', '378 000 м ²', 'Этаж: ', '10', 'Подъезд:', '3', 'Блок:', '1']
+data_str = str()
+# print(data)
+resulst_list = list()
+
+count = 0
+for i in resultInfo:
+    count += 1
+    data_str += i + ' '
+    # print(allo)
+    # print(i, end=' ')
+
+    if count % 13 == 0:
+        # print('')
+        resulst_list.append(data_str)
+        data_str = str()
+
+
+print('result', resulst_list, '\n')
+for i in resulst_list:
+    print(i)
+
