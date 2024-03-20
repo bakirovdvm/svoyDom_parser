@@ -64,7 +64,7 @@ for i in range(1, last_page_pagination + 1):
             resulst_list.append(data_str)
             data_str = str()
 
-# print(resulst_list)
+print(resulst_list)
 
 def collect_result_dict(data):
     result_dict = dict()
