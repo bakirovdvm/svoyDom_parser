@@ -2,6 +2,7 @@ import os
 import json
 import requests
 from bs4 import BeautifulSoup
+import collect_full_info_dict
 
 
 resulst_list = list()
@@ -64,30 +65,35 @@ for i in range(1, last_page_pagination + 1):
             resulst_list.append(data_str)
             data_str = str()
 
-print(resulst_list)
+print('resulst_list', type(resulst_list), resulst_list)
 
-def collect_result_dict(data):
-    result_dict = dict()
-    for item in data:
-        # apt_numb_ind = item.rfind('№')
-        apt_numb_ind = str()
+result_for_print = collect_full_info_dict.make_json(resulst_list)
 
-        for j in range(item.find('№') + 2, item.find('№') + 5):
-            if item[j] != ' ':
-                apt_numb_ind += item[j]
-                # print(item[j], item[j], item)
-            else:
-                break
+for item in result_for_print:
+    print(item)
 
-        result_dict[apt_numb_ind] = item
-
-    return result_dict
-
-
-result = collect_result_dict(resulst_list)
-for item in result:
-    print(item, result[item])
-print('resulst_list', result)
+# def collect_result_dict(data):
+#     result_dict = dict()
+#     for item in data:
+#         # apt_numb_ind = item.rfind('№')
+#         apt_numb_ind = str()
+#
+#         for j in range(item.find('№') + 2, item.find('№') + 5):
+#             if item[j] != ' ':
+#                 apt_numb_ind += item[j]
+#                 # print(item[j], item[j], item)
+#             else:
+#                 break
+#
+#         result_dict[apt_numb_ind] = item
+#
+#     return result_dict
+#
+#
+# result = collect_result_dict(resulst_list)
+# for item in result:
+#     print(item, result[item])
+# print('resulst_list', type(result), result)
 
 
 ######################################################
