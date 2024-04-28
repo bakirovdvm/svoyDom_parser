@@ -20,25 +20,6 @@ for i in range(1, last_page_pagination + 1):
     paginateLimit = int()
     soup = BeautifulSoup(page.text, "html.parser")
 
-    # ################################################
-    # paginateLimitInfo = soup.findAll(class_='bx-pagination-container')
-    # countt = 0
-    # # for i in paginateLimitInfo:
-    # #     for j in i:
-    # #         for k in j:
-    # #             countt += 1
-    # #             print(countt, k)
-    # #         # countt += 1
-    # #         # print(countt, j)
-    # #     break
-    # for i in paginateLimitInfo:
-    #
-    #     print(i)
-    #         # countt += 1
-    #         # print(countt, j)
-    #     break
-    ################################################
-
     # print('paginateLimit'.upper(), paginateLimit)
 
     allInfo = soup.findAll('div', class_='text-wrap')
@@ -123,11 +104,4 @@ file_name = 'resultList_-_OLEN.json'
 path_for_file = os.path.join(file_name)
 with open(file_name, 'w') as f:
     f.write(json.dumps(resulst_list))
-#
-# with open(file_name) as f:
-#     data = json.load(f)
-#
-#     for key, value in resulst_list.items():
-#         print(key, value)
-#     # print(data)
-#     print(len(data))
+

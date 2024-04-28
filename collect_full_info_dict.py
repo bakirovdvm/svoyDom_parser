@@ -81,13 +81,6 @@ def make_json(resulst_list):
         result.append(my_dict)
 
 
-    # print('RESULT', result)
-    # for i in result:
-    #     print(i)
-
-
-
-    # ##############################
 
     file_name = 'result_olen.json'
     path_for_file = os.path.join(file_name)
