@@ -64,9 +64,9 @@ print()
 print('resulst_list', type(resulst_list), resulst_list)
 print()
 
-
-file_name = 'resultList_-_DOMBYRA.json'
-path_for_file = os.path.join(file_name)
-with open(file_name, 'w') as f:
-    f.write(json.dumps(resulst_list))
+#
+# file_name = 'resultList_-_DOMBYRA.json'
+# path_for_file = os.path.join(file_name)
+# with open(file_name, 'w') as f:
+#     f.write(json.dumps(resulst_list))
 
