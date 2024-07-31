@@ -38,12 +38,49 @@ for item in data:
     sheet[row][3].value = item['Этаж:']
     sheet[row][4].value = item['Подъезд:']
     sheet[row][6].value = datetime.date.today()
-    sheet[row][7].value = item['Цена за квм:']
-    sheet[row][8].value = item['Цена общая:']
+    if sheet[row][7]:
+        sheet[row][7].value = item['Цена за квм:']
+        # sheet[row][8].value = item['Цена общая:']
+        sheet[row][8].value = int(item['Цена за квм:'].replace(' ', '')) * float(item['Площадь:'])
     # print(apt_number, rooms_quality, apt_S, price_sq_m, price_total, floor, entrance)
+    else:
+        sheet[row][7].value = item['Цена за квм:']
+        sheet[row][8].value = item['Цена общая:']
     row += 1
 
 
 book.save('my_book.xlsx')
 book.close()
 
+print('done')
+
+
+
+####### NEED TO STUDY CODE #######
+# https://stackoverflow.com/questions/67880607/how-to-update-existing-excel-xlsx-file-using-openpyxl
+# import arcpy
+# import openpyxl as px
+#
+# def main():
+#     wb = px.load_workbook(r"C:\Users\Hp\Desktop\Ejemplo\VINCULACION_S.xlsx")
+#     ws = wb['VINCULACION_SH_NUE']
+#     in_features = r"C:\Users\Hp\Desktop\Ejemplo\VH_Dissolve.shp"
+#
+#     row_num = 3
+#     with arcpy.da.SearchCursor(
+#         in_features,
+#         ["COLOR", "INTERNO_DE", "CLASE_DEMA", "COUNT_AREA", "SUM_AREA", "SUM_LENGTH"],
+#     ) as cursor:
+#         for row in cursor:
+#             ws.cell(row=row_num, column=2).value = row[0]
+#             ws.cell(row=row_num, column=3).value = row[1]
+#             ws.cell(row=row_num, column=4).value = row[2]
+#             ws.cell(row=row_num, column=6).value = row[3]
+#             ws.cell(row=row_num, column=7).value = row[4]
+#             ws.cell(row=row_num, column=8).value = row[5]
+#             row_num += 1
+#     wb.save(r"C:\Users\Hp\Desktop\Ejemplo\VINCULACION_S.xlsx")
+#
+#
+# if __name__ == "__main__":
+#     main()
