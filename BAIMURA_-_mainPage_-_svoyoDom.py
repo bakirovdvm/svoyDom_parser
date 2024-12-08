@@ -10,8 +10,7 @@ last_page_pagination = 5
 for i in range(1, last_page_pagination + 1):
     # url = f'https://svoydom.kz/project/1/1061833/?PAGEN_2={i}&bxajaxid=ad9ace59831b5e8d9f86e087d95a772c'
     # url = 'https://svoydom.kz/project/flat/all/nazvanie_obekta_zhk-is-baimura/stoimost_pomeshcheniya_kvartiry_tenge-from-16630600-to-112179000/ploshchad_pomeshcheniya_kvartiry_m2-from-30-to-185/tsena_za_1_m2_tenge-from-336000-to-860000/etazh-from-1-to-12/apply/?PAGEN_1=2&bxajaxid=f8f26e29099fe0ef7724b58a2b3d2dd9'
-    url = 'https://svoydom.kz/project/flat/all/nazvanie_obekta_zhk-is-baimura/stoimost_pomeshcheniya_kvartiry_tenge' \
-          '-from-16630600-to-112179000/ploshchad_pomeshcheniya_kvartiry_m2-from-30-to-185/tsena_za_1_m2_tenge-from-336000-to-860000/etazh-from-1-to-12/apply/?PAGEN_1={i}&bxajaxid=f8f26e29099fe0ef7724b58a2b3d2dd9'
+    url = 'https://svoydom.kz/project/flat/all/nazvanie_obekta_zhk-is-baimura/stoimost_pomeshcheniya_kvartiry_tenge-from-16630600-to-112179000/ploshchad_pomeshcheniya_kvartiry_m2-from-30-to-185/tsena_za_1_m2_tenge-from-336000-to-860000/etazh-from-1-to-12/apply/?PAGEN_1={i_page}&bxajaxid=f8f26e29099fe0ef7724b58a2b3d2dd9'.format(i_page=i)
     page = requests.get(url)
     # print('pageStatus:', page.status_code)
 
