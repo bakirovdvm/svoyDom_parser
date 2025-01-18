@@ -17,9 +17,23 @@ from exportDataToExcel import make_excel
 # url = 'https://svoydom.kz/project/flat/all/nazvanie_obekta_zhk-is-baimura/apply/?PAGEN_1={i_page}&bxajaxid=f8f26e29099fe0ef7724b58a2b3d2dd9'
 
 
-project_name = 'TAMASHA'
-last_page_pagination = 7
-url = 'https://svoydom.kz/project/flat/all/nazvanie_obekta_zhk-is-tamasha/apply/?PAGEN_1={i_page}&bxajaxid=f8f26e29099fe0ef7724b58a2b3d2dd9'
+# project_name = 'TAMASHA'
+# last_page_pagination = 7
+# url = 'https://svoydom.kz/project/flat/all/nazvanie_obekta_zhk-is-tamasha/apply/?PAGEN_1={i_page}&bxajaxid=f8f26e29099fe0ef7724b58a2b3d2dd9'
+
+
+project_name = 'DAUYS'
+last_page_pagination = 13
+url = 'https://svoydom.kz/project/flat/all/nazvanie_obekta_zhk-is-dauys/apply/?PAGEN_1={i_page}&bxajaxid=f8f26e29099fe0ef7724b58a2b3d2dd9'
+
+
+# need to wait
+# project_name = 'QAIYNDY_III'
+# last_page_pagination = 11
+# # url = 'https://svoydom.kz/project/flat/all/nazvanie_obekta_zhk-is-dauys/apply/?PAGEN_1={i_page}&bxajaxid=f8f26e29099fe0ef7724b58a2b3d2dd9'
+# url = 'https://svoydom.kz/project/flat/all/nazvanie_obekta_zhk-is-qaiyndy3/apply/?PAGEN_1={i_page}&bxajaxid=f8f26e29099fe0ef7724b58a2b3d2dd9'
+
+
 
 
 def main():
